@@ -1,5 +1,7 @@
+require_relative "./card.rb"
+
 class Board
-    LETTERS = ("A".."Z").to_a
+    
     def initialize(n)
         @grid = Array.new(n) { Array.new(n) }
     end
@@ -16,33 +18,16 @@ class Board
         @grid[pos[0]][pos[1]] = value
     end
 
-    def random_letters
-        rand = []
-        8.times do 
-            rand << LETTERS.sample
-        end
-        rand
-    end
-
-    # def populate
-    #     i = 0
-
-    #     while i < random_letters.length
-    #         pos = [] 
-    #         pos << (0..3).to_a.sample 
-    #         pos << (0..3).to_a.sample
-            
-    #     end
+    # def flatten
+    #     @grid.flatten
     # end
 
-    def populate
-        (0...grid.flatten.length).each do |i|
-            self.count { |self[i]| self[i] } > 3
-            self[i] = random_letters.sample 
-        end
-    end
+    def populate 
+        cards = Card.get_random_cards
+        
+        (0...@grid.flatten!.length)
 
+    end
     
 end
 
-random_letters.all? { |ele| @grid.count "#{ele}" != 2 }
