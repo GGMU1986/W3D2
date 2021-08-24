@@ -24,15 +24,24 @@ class Board
         rand
     end
 
-    def populate
-        i = 0
-        while i < random_letters.length
-            pos = [] 
-            pos << (0..3).to_a.sample 
-            pos << (0..3).to_a.sample
+    # def populate
+    #     i = 0
+
+    #     while i < random_letters.length
+    #         pos = [] 
+    #         pos << (0..3).to_a.sample 
+    #         pos << (0..3).to_a.sample
             
+    #     end
+    # end
+
+    def populate
+        (0...grid.flatten.length).each do |i|
+            self.count { |self[i]| self[i] } > 3
+            self[i] = random_letters.sample 
         end
     end
 
     
 end
+
