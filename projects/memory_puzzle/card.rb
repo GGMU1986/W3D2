@@ -13,5 +13,12 @@ class Card
         @face_up = true
     end
     
+    def ==(other_card)
+        self.face_value == other_card.face_value
+    end
+
+    def to_s
+        
+    end
 
 end
