@@ -7,7 +7,8 @@ class Card
     def self.get_random_cards
         array = LETTERS.shuffle.take(8)
         doubled = array += array
-        doubled.shuffle.map { |face_value| Card.new(face_value) }
+        new_array = doubled.shuffle.map { |face_value| Card.new(face_value) }
+        new_array.each_slice(4).to_a
     end
 
     def initialize(face_value)
