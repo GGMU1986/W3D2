@@ -45,3 +45,4 @@ class Board
     
 end
 
+random_letters.all? { |ele| @grid.count "#{ele}" != 2 }
